@@ -5,13 +5,14 @@ pipeline {
         stage('Gamers online') {
             steps {
                 echo 'Number of gamers online:'
-                powershell '''
-                    $ErrorActionPreference = 'Stop'
-                    $appid = 570
-                    $url = "https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentPlayers/v1/?appid=$appid"
-                    $json = Invoke-RestMethod -Uri $url -UseBasicParsing -TimeoutSec 20
-                    Write-Output "AppID: $appid | Players online: $($json.response.player_count)"
-                '''
+                powershell 'gracze.ps1'
+            }
+        }
+
+        stage('Nowosci od tworcow') {
+            steps {
+                echo 'Latest news from the creators:'
+                powershell 'nowosci.ps1'
             }
         }
     }
