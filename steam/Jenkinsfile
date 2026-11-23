@@ -5,14 +5,14 @@ pipeline {
         stage('Gamers online') {
             steps {
                 echo 'Number of gamers online:'
-                powershell 'gracze.ps1'
+                powershell './gracze.ps1'
             }
         }
 
         stage('Nowosci od tworcow') {
             steps {
                 echo 'Latest news from the creators:'
-                powershell 'nowosci.ps1'
+                powershell './nowosci.ps1'
             }
         }
     }
